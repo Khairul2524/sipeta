@@ -7,13 +7,12 @@
 	<section class="section">
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-title">Tiket</h5>
+				<h5 class="card-title">Dusun</h5>
 				<table class="table table-striped">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Tiket</th>
-							<th scope="col">Harga</th>
+							<th scope="col">Dusun</th>
 							<th scope="col"> <button type="button" class="tombol-tambah btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#basicModal">Tambah</button></th>
 						</tr>
 					</thead>
@@ -21,17 +20,18 @@
 						<?php
 						$no = 1;
 						foreach ($data as $d) {
+
 						?>
 							<tr>
 								<th scope="row"><?= $no++; ?></th>
-								<td><?= $d->tiket; ?></td>
-								<td><?= $d->tarif; ?></td>
+								<td><?= $d->dusun; ?></td>
 								<td>
-									<button type="button" class="btn btn-warning tombol-ubah" data-bs-toggle="modal" data-bs-target="#basicModal" data-id="<?= $d->idtiket ?>"><i class="bi bi-tools"></i></button>
-									<a href="<?= site_url('tiket/hapus/') . $d->idtiket ?>" type="button" class="btn btn-danger" onclick="return confirm('Yakin Hapus?')"><i class="bi bi-trash-fill"></i>
+									<button type="button" class="btn btn-warning tombol-ubah" data-bs-toggle="modal" data-bs-target="#basicModal" data-id="<?= $d->iddusun ?>"><i class="bi bi-tools"></i></button>
+									<a href="<?= site_url('dusun/hapus/') . $d->iddusun ?>" type="button" class="btn btn-danger" onclick="return confirm('Yakin Hapus?')"><i class="bi bi-trash-fill"></i>
 								</td>
 							</tr>
-						<?php } ?>
+						<?php }
+						?>
 					</tbody>
 				</table>
 			</div>
@@ -40,7 +40,7 @@
 
 	<div class="modal fade" id="basicModal" tabindex="-1">
 		<div class="modal-dialog">
-			<form class="row g-3" action="<?= site_url('tiket/tambah') ?>" method="POST">
+			<form class="row g-3" action="<?= site_url('dusun/tambah') ?>" method="POST">
 				<div class="modal-content">
 
 					<div class="modal-header">
@@ -51,13 +51,9 @@
 					<div class="modal-body">
 
 						<div class="col-12">
-							<label for="tiket" class="form-label">Tiket</label>
+							<label for="dusun" class="form-label">dusun</label>
 							<input type="hidden" name="id" id="id">
-							<input type="text" class="form-control" id="tiket" name="tiket" required>
-						</div>
-						<div class="col-12">
-							<label for="harga" class="form-label">Harga</label>
-							<input type="number" class="form-control" id="harga" name="harga" required>
+							<input type="text" class="form-control" id="dusun" name="dusun" required autocomplete="off">
 						</div>
 
 					</div>
@@ -74,23 +70,22 @@
 		$(function() {
 			// tambah
 			$('.tombol-tambah').on('click', function() {
-				$('.modal-title').html('Tambah Tiket')
+				$('.modal-title').html('Tambah dusun')
 				$('.modal-footer button[type= submit]').html('Simpan')
 				$('#id').val('')
-				$('#tiket').val('')
-				$('#harga').val('')
+				$('#dusun').val('')
 
 
 			})
 			// ubah
 			$('.tombol-ubah').on('click', function() {
-				$('.modal-title').html('Ubah Tiket')
+				$('.modal-title').html('Ubah dusun')
 				$('.modal-footer button[type= submit]').html('Ubah')
-				$('.modal-dialog form').attr('action', `<?= site_url('tiket/ubah') ?>`)
+				$('.modal-dialog form').attr('action', `<?= site_url('dusun/ubah') ?>`)
 				const id = $(this).data('id')
 				// console.log(id)
 				$.ajax({
-					url: `<?= site_url('tiket/getubah') ?>`,
+					url: `<?= site_url('dusun/getubah') ?>`,
 					data: {
 						id: id
 					},
@@ -98,9 +93,8 @@
 					dataType: 'json',
 					success: function(data) {
 						// console.log(data)
-						$('#id').val(data.idtiket)
-						$('#tiket').val(data.tiket)
-						$('#harga').val(data.tarif)
+						$('#id').val(data.iddusun)
+						$('#dusun').val(data.dusun)
 
 					}
 				})

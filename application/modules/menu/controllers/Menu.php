@@ -35,6 +35,7 @@ class Menu extends MX_Controller
 			'menu' => htmlspecialchars($this->input->post('menu')),
 			'icon' => htmlspecialchars($this->input->post('icon')),
 			'url' => htmlspecialchars($this->input->post('url')),
+			'urutan' => htmlspecialchars($this->input->post('urutan')),
 			'aktif' => htmlspecialchars($this->input->post('aktif')),
 		);
 		// print_r($data);
@@ -62,6 +63,7 @@ class Menu extends MX_Controller
 			'menu' => htmlspecialchars($this->input->post('menu')),
 			'icon' => htmlspecialchars($this->input->post('icon')),
 			'url' => htmlspecialchars($this->input->post('url')),
+			'urutan' => htmlspecialchars($this->input->post('urutan')),
 			'aktif' => htmlspecialchars($this->input->post('aktif')),
 		);
 		// print_r($data);

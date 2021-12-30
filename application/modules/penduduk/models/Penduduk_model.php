@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Transaksi_model extends CI_Model
+class Penduduk_model extends CI_Model
 {
-    public $tabel = 'transaksi';
-    public $id  = 'id';
+    public $tabel = 'penduduk';
+    public $id  = 'idpenduduk';
     public function get()
     {
-        return  $this->db->from($this->tabel)->join('tiket', 'tiket.idtiket=transaksi.idtiket')->order_by('id', 'DESC')->get()->result();
+        return  $this->db->get($this->tabel)->result();
     }
     public function insert($data)
     {

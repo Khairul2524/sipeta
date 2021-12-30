@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Tiket_model extends CI_Model
+class Dusun_model extends CI_Model
 {
-    public $tabel = 'tiket';
-    public $id  = 'idtiket';
+    public $tabel = 'dusun';
+    public $id  = 'iddusun';
     public function get()
     {
         return  $this->db->get($this->tabel)->result();

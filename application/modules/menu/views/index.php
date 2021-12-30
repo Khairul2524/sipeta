@@ -15,6 +15,7 @@
 							<th>Menu</th>
 							<th>icon</th>
 							<th>url</th>
+							<th>urutan</th>
 							<th>Aktif</th>
 							<th><button type="button" class="tombol-tambah btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#basicModal">Tambah</button></th>
 						</tr>
@@ -29,6 +30,7 @@
 								<td><?= $d->menu ?></td>
 								<td><?= $d->icon ?></td>
 								<td><?= $d->url ?></td>
+								<td><?= $d->urutan ?></td>
 								<td><?php
 									if ($d->aktif == 1) {
 										echo "Aktif";
@@ -72,7 +74,10 @@
 							<label for="url" class="form-label">Url</label>
 							<input type="text" class="form-control" id="url" name="url" required autocomplete="off">
 						</div>
-
+						<div class="col-12">
+							<label for="urutan" class="form-label">Urutan</label>
+							<input type="number" class="form-control" id="urutan" name="urutan" required autocomplete="off">
+						</div>
 						<div class="col-12">
 							<legend class="col-form-label col-sm-2 pt-0">Aktif</legend>
 							<div class="col-sm-10">
@@ -110,6 +115,7 @@
 				$('#menu').val('')
 				$('#icon').val('')
 				$('#url').val('')
+				$('#urutan').val('')
 				$('#aktif').val(1)
 				$('#tidakaktif').val(2)
 			})
@@ -134,6 +140,7 @@
 						$('#menu').val(data.menu)
 						$('#icon').val(data.icon)
 						$('#url').val(data.url)
+						$('#urutan').val(data.urutan)
 						if (data.aktif == 1) {
 							$('input:radio[name=aktif][value=' + data.aktif + ']')[0].checked = true;
 						} else {

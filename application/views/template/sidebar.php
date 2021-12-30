@@ -8,7 +8,7 @@
             'idrole' => $idrole,
             'aktif' => 1
         );
-        $menu = $this->db->from('aksesmenu')->join('menu', 'menu.idmenu=aksesmenu.idmenu')->where($dimana)->get()->result();
+        $menu = $this->db->from('aksesmenu')->join('menu', 'menu.idmenu=aksesmenu.idmenu')->where($dimana)->order_by('urutan', 'ASC')->get()->result();
         foreach ($menu as $m) {
         ?>
             <li class="nav-item">
@@ -20,7 +20,7 @@
         <?php } ?>
         <?php
         if ($this->session->userdata('idrole') == 2) {
-            $menu = $this->db->get('menu')->result();
+            $menu = $this->db->from('menu')->order_by('urutan', 'ASC')->get()->result();
             foreach ($menu as $m) {
         ?>
                 <li class="nav-item">
