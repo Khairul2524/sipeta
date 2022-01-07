@@ -13,6 +13,8 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Dusun</th>
+							<th scope="col">Latitude</th>
+							<th scope="col">Longitude</th>
 							<th scope="col"> <button type="button" class="tombol-tambah btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#basicModal">Tambah</button></th>
 						</tr>
 					</thead>
@@ -25,6 +27,8 @@
 							<tr>
 								<th scope="row"><?= $no++; ?></th>
 								<td><?= $d->dusun; ?></td>
+								<td><?= $d->lat; ?></td>
+								<td><?= $d->lng; ?></td>
 								<td>
 									<button type="button" class="btn btn-warning tombol-ubah" data-bs-toggle="modal" data-bs-target="#basicModal" data-id="<?= $d->iddusun ?>"><i class="bi bi-tools"></i></button>
 									<a href="<?= site_url('dusun/hapus/') . $d->iddusun ?>" type="button" class="btn btn-danger" onclick="return confirm('Yakin Hapus?')"><i class="bi bi-trash-fill"></i>
@@ -51,11 +55,18 @@
 					<div class="modal-body">
 
 						<div class="col-12">
-							<label for="dusun" class="form-label">dusun</label>
+							<label for="dusun" class="form-label">Dusun</label>
 							<input type="hidden" name="id" id="id">
 							<input type="text" class="form-control" id="dusun" name="dusun" required autocomplete="off">
 						</div>
-
+						<div class="col-12">
+							<label for="lat" class="form-label">Latitude</label>
+							<input type="text" class="form-control" id="lat" name="lat" required autocomplete="off">
+						</div>
+						<div class="col-12">
+							<label for="lng" class="form-label">Longitude</label>
+							<input type="text" class="form-control" id="lng" name="lng" required autocomplete="off">
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -74,6 +85,8 @@
 				$('.modal-footer button[type= submit]').html('Simpan')
 				$('#id').val('')
 				$('#dusun').val('')
+				$('#lat').val('')
+				$('#lng').val('')
 
 
 			})
@@ -95,7 +108,8 @@
 						// console.log(data)
 						$('#id').val(data.iddusun)
 						$('#dusun').val(data.dusun)
-
+						$('#lat').val(data.lat)
+						$('#lng').val(data.lng)
 					}
 				})
 			})

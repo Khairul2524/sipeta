@@ -8,6 +8,9 @@ class Menu extends MX_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('idrole') != 2) {
+			redirect('auth');
+		}
 		$this->load->model('Menu_model', 'menu');
 		$this->load->model('all_model', 'all');
 	}

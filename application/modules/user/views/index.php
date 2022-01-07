@@ -63,7 +63,7 @@
 
 					<div class="modal-body">
 						<div class="col-12">
-							<label for="nama" class="form-label">Nama Lenkap</label>
+							<label for="nama" class="form-label">Nama Lengkap</label>
 							<input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
 						</div>
 						<div class="col-12">
@@ -153,7 +153,7 @@
 						$('#nama').val(data.nama)
 						$('#username').val(data.username)
 						// $('#password').val(data.password)
-						$('#nama').val(data.nama)
+						// $('#nama').val(data.nama)
 						$('#role').val(data.idrole)
 						if (data.aktif == 1) {
 							$('input:radio[name=aktif][value=' + data.aktif + ']')[0].checked = true;

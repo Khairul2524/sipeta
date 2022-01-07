@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>SIP Tiket</title>
+    <title>SIP Covid</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -50,7 +50,7 @@
                             <div class="d-flex justify-content-center py-4">
                                 <a href="index.html" class="logo d-flex align-items-center w-auto">
 
-                                    <span class="d-none d-lg-block">SIP TIKET</span>
+                                    <span class="d-none d-lg-block">SIP Covid</span>
                                 </a>
                             </div><!-- End Logo -->
 

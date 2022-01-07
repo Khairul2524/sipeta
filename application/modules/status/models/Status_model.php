@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Penduduk_model extends CI_Model
+class Status_model extends CI_Model
 {
-    public $tabel = 'penduduk';
-    public $id  = 'idpenduduk';
+    public $tabel = 'status';
+    public $id  = 'idstatus';
     public function get()
     {
         return  $this->db->get($this->tabel)->result();

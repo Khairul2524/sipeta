@@ -7,12 +7,12 @@
 	<section class="section">
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-title">Dusun</h5>
+				<h5 class="card-title">Status</h5>
 				<table class="table table-striped">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Dusun</th>
+							<th scope="col">Status</th>
 							<th scope="col"> <button type="button" class="tombol-tambah btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#basicModal">Tambah</button></th>
 						</tr>
 					</thead>
@@ -24,10 +24,10 @@
 						?>
 							<tr>
 								<th scope="row"><?= $no++; ?></th>
-								<td><?= $d->dusun; ?></td>
+								<td><?= $d->status; ?></td>
 								<td>
-									<button type="button" class="btn btn-warning tombol-ubah" data-bs-toggle="modal" data-bs-target="#basicModal" data-id="<?= $d->iddusun ?>"><i class="bi bi-tools"></i></button>
-									<a href="<?= site_url('dusun/hapus/') . $d->iddusun ?>" type="button" class="btn btn-danger" onclick="return confirm('Yakin Hapus?')"><i class="bi bi-trash-fill"></i>
+									<button type="button" class="btn btn-warning tombol-ubah" data-bs-toggle="modal" data-bs-target="#basicModal" data-id="<?= $d->idstatus ?>"><i class="bi bi-tools"></i></button>
+									<a href="<?= site_url('status/hapus/') . $d->idstatus ?>" type="button" class="btn btn-danger" onclick="return confirm('Yakin Hapus?')"><i class="bi bi-trash-fill"></i>
 								</td>
 							</tr>
 						<?php }
@@ -40,7 +40,7 @@
 
 	<div class="modal fade" id="basicModal" tabindex="-1">
 		<div class="modal-dialog">
-			<form class="row g-3" action="<?= site_url('dusun/tambah') ?>" method="POST">
+			<form class="row g-3" action="<?= site_url('status/tambah') ?>" method="POST">
 				<div class="modal-content">
 
 					<div class="modal-header">
@@ -51,9 +51,9 @@
 					<div class="modal-body">
 
 						<div class="col-12">
-							<label for="dusun" class="form-label">dusun</label>
+							<label for="status" class="form-label">status</label>
 							<input type="hidden" name="id" id="id">
-							<input type="text" class="form-control" id="dusun" name="dusun" required autocomplete="off">
+							<input type="text" class="form-control" id="status" name="status" required>
 						</div>
 
 					</div>
@@ -70,22 +70,22 @@
 		$(function() {
 			// tambah
 			$('.tombol-tambah').on('click', function() {
-				$('.modal-title').html('Tambah dusun')
+				$('.modal-title').html('Tambah status')
 				$('.modal-footer button[type= submit]').html('Simpan')
 				$('#id').val('')
-				$('#dusun').val('')
+				$('#status').val('')
 
 
 			})
 			// ubah
 			$('.tombol-ubah').on('click', function() {
-				$('.modal-title').html('Ubah dusun')
+				$('.modal-title').html('Ubah status')
 				$('.modal-footer button[type= submit]').html('Ubah')
-				$('.modal-dialog form').attr('action', `<?= site_url('dusun/ubah') ?>`)
+				$('.modal-dialog form').attr('action', `<?= site_url('status/ubah') ?>`)
 				const id = $(this).data('id')
 				// console.log(id)
 				$.ajax({
-					url: `<?= site_url('dusun/getubah') ?>`,
+					url: `<?= site_url('status/getubah') ?>`,
 					data: {
 						id: id
 					},
@@ -93,8 +93,8 @@
 					dataType: 'json',
 					success: function(data) {
 						// console.log(data)
-						$('#id').val(data.iddusun)
-						$('#dusun').val(data.dusun)
+						$('#id').val(data.idstatus)
+						$('#status').val(data.status)
 
 					}
 				})

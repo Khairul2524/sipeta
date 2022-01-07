@@ -1,16 +1,23 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class KK_model extends CI_Model
+class Pasien_model extends CI_Model
 {
-    public $tabel = 'kk';
-    public $id  = 'idkk';
+    public $tabel = 'pasien';
+    public $id  = 'idpasien';
     public function get()
     {
-        return  $this->db->get($this->tabel)->result();
+        return  $this->db->from($this->tabel)->join('kasus', 'kasus.idkasus=pasien.idkasus')->join('dusun', 'dusun.iddusun=pasien.iddusun')->get()->result();
     }
     public function insert($data)
     {
         $this->db->insert($this->tabel, $data);
+        $id = $this->db->insert_id();
+        $data = [
+            'kode_kriteria1' => $id,
+            'kode_kriteria2' => $id,
+            'nilai' => 1
+        ];
+        $this->db->insert('bobot', $data);
     }
     public function getid($id)
     {

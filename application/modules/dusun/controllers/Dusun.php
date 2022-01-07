@@ -34,6 +34,8 @@ class Dusun extends MX_Controller
 	{
 		$data = array(
 			'dusun' => htmlspecialchars($this->input->post('dusun')),
+			'lat' => htmlspecialchars($this->input->post('lat')),
+			'lng' => htmlspecialchars($this->input->post('lng')),
 		);
 		// print_r($data);
 		// die;
@@ -58,17 +60,13 @@ class Dusun extends MX_Controller
 		$data = array(
 			'iddusun' => htmlspecialchars($this->input->post('id')),
 			'dusun' => htmlspecialchars($this->input->post('dusun')),
+			'lat' => htmlspecialchars($this->input->post('lat')),
+			'lng' => htmlspecialchars($this->input->post('lng')),
 		);
-		$cek = $this->db->get_where('dusun', ['dusun' => htmlspecialchars($this->input->post('dusun'))])->row();
-		// var_dump($cek);
-		if (!$cek) {
-			$this->dusun->update(htmlspecialchars($this->input->post('id')), $data);
-			$this->session->set_flashdata('berhasil', 'dusun Berhasil Diubah!');
-			redirect('dusun');
-		} else {
-			$this->session->set_flashdata('gagal', 'dusun Gagal Diubah!');
-			redirect('dusun');
-		}
+
+		$this->dusun->update(htmlspecialchars($this->input->post('id')), $data);
+		$this->session->set_flashdata('berhasil', 'dusun Berhasil Diubah!');
+		redirect('dusun');
 	}
 	public function hapus($id)
 	{
