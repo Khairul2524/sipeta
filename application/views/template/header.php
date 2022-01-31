@@ -11,23 +11,24 @@
 
   <!-- Favicons -->
   <link href="<?= base_url('assets/backand/') ?>img/favicon.png" rel="icon">
-  <link href="<?= base_url('assets/backand/') ?>/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/backand/') ?>img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<?= base_url('assets/backand/') ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/backand/') ?>/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= base_url('assets/backand/') ?>/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/backand/') ?>/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="<?= base_url('assets/backand/') ?>/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="<?= base_url('assets/backand/') ?>/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="<?= base_url('assets/backand/') ?>/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="<?= base_url('assets/backand/') ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= base_url('assets/backand/') ?>vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?= base_url('assets/backand/') ?>vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="<?= base_url('assets/backand/') ?>vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="<?= base_url('assets/backand/') ?>vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="<?= base_url('assets/backand/') ?>vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="<?= base_url('assets/backand/') ?>vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/backand/') ?>/css/style.css" rel="stylesheet">
+  <link href="<?= base_url('assets/backand/') ?>/css/leaflet.css" rel="stylesheet">
   <script src="<?= base_url('assets/backand/') ?>/js/jquery-3.6.0.min.js"></script>
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.2.0

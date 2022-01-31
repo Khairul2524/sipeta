@@ -61,7 +61,6 @@ class user extends MX_Controller
 		$data = array(
 			'iduser' => htmlspecialchars($this->input->post('id')),
 			'username' => $this->input->post('username'),
-			'password' => password_hash(htmlspecialchars($this->input->post('password')), PASSWORD_DEFAULT),
 			'nama'     => $this->input->post('nama'),
 			'idrole'   => $this->input->post('role'),
 			'aktif'     => $this->input->post('aktif')

@@ -10,16 +10,17 @@ class Admin extends MX_Controller
 		parent::__construct();
 		login();
 		$this->load->model('Admin_model', 'admin');
+		$this->load->model('All_model', 'all');
 	}
 
 	public function index()
 	{
-		$id = $this->session->userdata('idrole');
+
 		$data = array(
 			'judul' => 'Dashboard',
-			'role' => $this->admin->getid($id)
+			'status' => $this->all->getstatus()
 		);
-		// var_dump($data['data']);
+		// var_dump($data['status']);
 		// die();
 		$this->load->view('template/header');
 		$this->load->view('template/navbar', $data);
