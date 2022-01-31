@@ -17,12 +17,22 @@
 				<canvas id="barChart" style="max-height: 400px;"></canvas>
 				<script>
 					var chartData = {
-						labels: ['Prai Timuk', 'Meke Timuk', 'Meke Bat', 'Nyangget', 'Alat', 'Dasan Baru', 'Monjok'],
+						labels: [<?php
+									foreach ($dusun as $d) {
+										echo  "'" . $d->dusun . "',";
+									}
+									?>],
 						datasets: [{
 							fillColor: "#79D1CF",
 							strokeColor: "#79D1CF",
-							data: ['100', '69', '80', '70', '70', '80', '80 ', ],
-							backgroundColor: ['rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', ],
+							data: [<?php foreach ($dusun as $d) {
+										$query = $this->db->get_where('pasien', ['iddusun' => $d->iddusun])->result();
+										$jumlah = count($query);
+										echo "'" . $jumlah . "',";
+									} ?>],
+							backgroundColor: [<?php foreach ($dusun as $d) {
+													echo "'" . 'rgba(255, 195, 48, 1)' . "',";
+												} ?>],
 							borderColor: [
 								'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)', 'rgba(255, 195, 48, 1)',
 							],
@@ -108,10 +118,14 @@
 	});
 	<?php
 	foreach ($dusun as $d) {
+		$query = $this->db->get_where('pasien', ['iddusun' => $d->iddusun])->result();
+		$jumlah = count($query);
 	?>
 		var marker = L.marker([<?= $d->lat ?>, <?= $d->lng ?>], {
 				icon: myIcon
 			}).addTo(map)
-			.bindPopup('<b><?= $d->dusun ?></b>').openPopup();
-	<?php } ?>
+			.bindPopup('<b><?= $d->dusun . ' ' . $jumlah ?> Orang</b>').openPopup();
+	<?php
+	}
+	?>
 </script>
