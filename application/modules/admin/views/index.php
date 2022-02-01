@@ -89,9 +89,208 @@
 
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Grafik Penyebab Terkena Covid-19<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></h5>
 
+						<!-- Pie Chart -->
+						<canvas id="ka" style="max-height: 400px;"></canvas>
+						<script>
+							var chartData = {
+								labels: [<?php
+											foreach ($kasus as $k) {
+												echo  "'" . $k->kasus . "',";
+											}
+											?>],
+								datasets: [{
+									fillColor: "#79D1CF",
+									strokeColor: "#79D1CF",
+									data: [<?php foreach ($kasus as $k) {
+												$query = $this->db->get_where('pasien', ['idkasus' => $k->idkasus])->result();
+												$jumlah = count($query);
+												echo "'" . $jumlah . "',";
+											} ?>],
+									backgroundColor: [<?php foreach ($kasus as $k) {
+															echo "'" . 'rgba(34, 139, 34, 1.0)' . "',";
+														} ?>],
+									borderColor: [<?php foreach ($kasus as $k) {
+														echo "'" . 'rgba(34, 139, 34, 1.0)' . "',";
+													} ?>],
+								}]
 
+							};
 
+							var opt = {
+								events: false,
+								tooltips: {
+									enabled: false
+								},
+								hover: {
+									animationDuration: 0
+								},
+								animation: {
+									duration: 1,
+									onComplete: function() {
+										var chartInstance = this.chart,
+											ctx = chartInstance.ctx;
+										ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+										ctx.textAlign = 'center';
+										ctx.textBaseline = 'bottom';
+
+										this.data.datasets.forEach(function(dataset, i) {
+											var meta = chartInstance.controller.getDatasetMeta(i);
+											meta.data.forEach(function(bar, index) {
+												var data = dataset.data[index];
+												ctx.fillText(data, bar._model.x, bar._model.y - 5);
+											});
+										});
+									}
+								},
+								legend: {
+									display: false
+								},
+								tooltips: {
+									callbacks: {
+										label: function(tooltipItem) {
+											console.log(tooltipItem)
+											return tooltipItem.yLabel;
+										}
+									}
+								}
+							};
+							var ctx = document.getElementById("ka"),
+								myLineChart = new Chart(ctx, {
+									type: 'bar',
+									data: chartData,
+									options: opt
+								});
+						</script>
+						<!-- End Pie CHart -->
+
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Grafik Perkembangan Pasien Covid-19<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></h5>
+
+						<!-- Pie Chart -->
+						<canvas id="gppc" style="max-height: 400px;"></canvas>
+						<script>
+							var chartData = {
+								labels: [<?php
+											foreach ($status as $s) {
+												echo  "'" . $s->status . "',";
+											}
+											?>],
+								datasets: [{
+									fillColor: "#79D1CF",
+									strokeColor: "#79D1CF",
+									data: [<?php foreach ($status as $s) {
+												$query = $this->db->get_where('pasien', ['idstatus' => $s->idstatus])->result();
+												$jumlah = count($query);
+												echo "'" . $jumlah . "',";
+											} ?>],
+									backgroundColor: [<?php foreach ($status as $s) {
+															echo "'" . 'rgba(255,0,0,0.9)' . "',";
+														} ?>],
+									borderColor: [<?php foreach ($status as $s) {
+														echo "'" . 'rgba(255,0,0,0.9)' . "',";
+													} ?>],
+								}]
+
+							};
+
+							var opt = {
+								events: false,
+								tooltips: {
+									enabled: false
+								},
+								hover: {
+									animationDuration: 0
+								},
+								animation: {
+									duration: 1,
+									onComplete: function() {
+										var chartInstance = this.chart,
+											ctx = chartInstance.ctx;
+										ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+										ctx.textAlign = 'center';
+										ctx.textBaseline = 'bottom';
+
+										this.data.datasets.forEach(function(dataset, i) {
+											var meta = chartInstance.controller.getDatasetMeta(i);
+											meta.data.forEach(function(bar, index) {
+												var data = dataset.data[index];
+												ctx.fillText(data, bar._model.x, bar._model.y - 5);
+											});
+										});
+									}
+								},
+								legend: {
+									display: false
+								},
+								tooltips: {
+									callbacks: {
+										label: function(tooltipItem) {
+											console.log(tooltipItem)
+											return tooltipItem.yLabel;
+										}
+									}
+								}
+							};
+							var ctx = document.getElementById("gppc"),
+								myLineChart = new Chart(ctx, {
+									type: 'bar',
+									data: chartData,
+									options: opt
+								});
+						</script>
+						<!-- End Pie CHart -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Jumlah Karantina Berdasarakan Jenis Kelamin</h5>
+
+						<!-- Pie Chart -->
+						<canvas id="ka1" style="max-height: 400px;"></canvas>
+						<script>
+							document.addEventListener("DOMContentLoaded", () => {
+								new Chart(document.querySelector('#ka1'), {
+									type: 'pie',
+									data: {
+										labels: [
+											'Perempuan',
+											'Laki-Laki',
+										],
+										datasets: [{
+											label: 'My First Dataset',
+											data: [300, 50],
+											backgroundColor: [
+												'rgb(255, 99, 132)',
+												'rgb(54, 162, 235)',
+											],
+											hoverOffset: 4
+										}]
+									}
+								});
+							});
+						</script>
+						<!-- End Pie CHart -->
+
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="card">
 			<div class="card-body">

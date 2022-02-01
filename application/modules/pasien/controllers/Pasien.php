@@ -19,6 +19,7 @@ class Pasien extends MX_Controller
 			'judul' => 'Pasien',
 			'data' => $this->pasien->get(),
 			'kasus' => $this->db->get('kasus')->result(),
+			'status' => $this->db->get('status')->result(),
 			'dusun' => $this->db->get('dusun')->result()
 		);
 		// var_dump($data['role']);
@@ -33,15 +34,16 @@ class Pasien extends MX_Controller
 	public function tambah()
 	{
 		$data = array(
-			'nama' => $this->input->post('nama'),
-			'nik'     => $this->input->post('nik'),
-			'nokk'     => $this->input->post('nokk'),
-			'noponsel'     => $this->input->post('noponsel'),
-			'email'     => $this->input->post('email'),
-			'tempatlahir'     => $this->input->post('tempatlahir'),
-			'tgllahir'     => $this->input->post('tgllahir'),
-			'idkasus'     => $this->input->post('kasus'),
-			'iddusun'   => $this->input->post('dusun'),
+			'nama' 			=> $this->input->post('nama'),
+			'jk'     		=> $this->input->post('jk'),
+			'nik'     		=> $this->input->post('nik'),
+			'nokk'     		=> $this->input->post('nokk'),
+			'noponsel'     	=> $this->input->post('noponsel'),
+			'tempatlahir'   => $this->input->post('tempatlahir'),
+			'tgllahir'     	=> $this->input->post('tgllahir'),
+			'idkasus'     	=> $this->input->post('kasus'),
+			'idstatus'     	=> $this->input->post('status'),
+			'iddusun'   	=> $this->input->post('dusun'),
 			// 'aktif'     => $this->input->post('aktif')
 		);
 		// print_r($data);
@@ -67,13 +69,14 @@ class Pasien extends MX_Controller
 		$data = array(
 			'idpasien' => htmlspecialchars($this->input->post('id')),
 			'nama' => $this->input->post('nama'),
+			'jk'     => $this->input->post('jk'),
 			'nik'     => $this->input->post('nik'),
 			'nokk'     => $this->input->post('nokk'),
 			'noponsel'     => $this->input->post('noponsel'),
-			'email'     => $this->input->post('email'),
 			'tempatlahir'     => $this->input->post('tempatlahir'),
 			'tgllahir'     => $this->input->post('tgllahir'),
 			'idkasus'     => $this->input->post('kasus'),
+			'idstatus'     => $this->input->post('status'),
 			'iddusun'   => $this->input->post('dusun'),
 		);
 		// print_r($data);

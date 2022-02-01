@@ -19,7 +19,8 @@ class Admin extends MX_Controller
 		$data = array(
 			'judul' => 'Dashboard',
 			'status' => $this->all->getstatus(),
-			'dusun' => $this->all->getdusun()
+			'dusun' => $this->all->getdusun(),
+			'kasus' => $this->all->getkasus()
 		);
 		// var_dump($data['status']);
 		// die();

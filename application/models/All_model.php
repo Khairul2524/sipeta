@@ -6,6 +6,10 @@ class All_model extends CI_Model
     {
         return  $this->db->get('status')->result();
     }
+    public function getkasus()
+    {
+        return  $this->db->get('kasus')->result();
+    }
     public function getdusun()
     {
         return  $this->db->get('dusun')->result();

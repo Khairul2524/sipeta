@@ -11,6 +11,13 @@ class Pasien_model extends CI_Model
     public function insert($data)
     {
         $this->db->insert($this->tabel, $data);
+        $id = $this->db->insert_id();
+        $datar = array(
+            'idpasien' => $id,
+            'idstatus' => $this->input->post('status'),
+            'time'     => time()
+        );
+        $this->db->insert('riwayat', $datar);
     }
     public function getid($id)
     {
@@ -18,6 +25,15 @@ class Pasien_model extends CI_Model
     }
     public function update($id, $data)
     {
+        $cek = $this->db->get_where('riwayat', ['idpasien' => $id, 'idstatus' => $this->input->post('status')])->row();
+        if (!$cek) {
+            $datar = array(
+                'idpasien' => $id,
+                'idstatus' => $this->input->post('status'),
+                'time'     => time()
+            );
+            $this->db->insert('riwayat', $datar);
+        }
         $this->db->where($this->id, $id);
         $this->db->update($this->tabel, $data);
     }
