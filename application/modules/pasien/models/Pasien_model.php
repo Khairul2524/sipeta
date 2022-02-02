@@ -21,7 +21,7 @@ class Pasien_model extends CI_Model
     }
     public function getid($id)
     {
-        return $this->db->get_where($this->tabel, [$this->id => $id])->row();
+        return $this->db->from($this->tabel)->join('kasus', 'kasus.idkasus=pasien.idkasus')->join('status', 'status.idstatus=pasien.idstatus')->join('dusun', 'dusun.iddusun=pasien.iddusun')->where(['idpasien' => $id])->get()->row();
     }
     public function update($id, $data)
     {

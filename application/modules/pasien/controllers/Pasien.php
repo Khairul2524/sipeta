@@ -94,4 +94,21 @@ class Pasien extends MX_Controller
 		$this->session->set_flashdata('berhasil', 'pasien Berhasil Dihapus!');
 		redirect('pasien');
 	}
+	public function detail($id)
+	{
+		$data = array(
+			'judul' => 'Profile Pasien',
+			'data' => $this->pasien->getid($id),
+			'kasus' => $this->db->get('kasus')->result(),
+			'status' => $this->db->get('status')->result(),
+			'dusun' => $this->db->get('dusun')->result()
+		);
+		// var_dump($data['data']);
+		// die();
+		$this->load->view('template/header');
+		$this->load->view('template/navbar', $data);
+		$this->load->view('template/sidebar', $data);
+		$this->load->view('detail', $data);
+		$this->load->view('template/footer');
+	}
 }
